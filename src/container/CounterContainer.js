@@ -20,10 +20,9 @@ function mapStateToProps(state) {
 
   function mapDispatchToProps(dispatch)
   {
-  
     return({
         doIncrement:()=>{dispatch('INCREMENT')},
-        doDecrement:()=>{dispatch('DECREMENT')}
+        doDecrement:()=>{dispatch('DECREMENT')},
     });
   }
 
