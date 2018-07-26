@@ -4,21 +4,12 @@ import Counter from '../components/Counter';
 
 export class CounterContainer extends React.Component{
 
-    increment = () => {
-        this.props.dispatch({ type: 'INCREMENT' });
-    }
-    decrement = () => {
-        this.props.dispatch({ type: 'DECREMENT' });
-    }
-
     render()
     {
         return(
-            <Counter count={this.props.count} increment={this.increment} decrement={this.decrement}/>
+            <Counter count={this.props.count} doIncrement={this.props.doIncrement} doDecrement={this.props.doDecrement}/>
         );
     }
-
-
 }
 
 function mapStateToProps(state) {
@@ -27,8 +18,13 @@ function mapStateToProps(state) {
     };
   }
 
-  function mapDispatchToProps(){
-      
+  function mapDispatchToProps(dispatch)
+  {
+  
+    return({
+        doIncrement:()=>{dispatch('INCREMENT')},
+        doDecrement:()=>{dispatch('DECREMENT')}
+    });
   }
 
-export default connect(mapStateToProps)(CounterContainer);
+export default connect(mapStateToProps,mapDispatchToProps)(CounterContainer);

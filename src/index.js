@@ -3,7 +3,7 @@ import {render} from 'react-dom';
 import {Provider} from 'react-redux';
 import CounterContainer from './container/CounterContainer';
 import {createStore} from 'redux';
-import {reducers} from './reducer';
+import {reducers} from './reducer/reducer';
 
 
 const store = createStore(reducers);
@@ -13,5 +13,4 @@ const App = () => (
       <CounterContainer />
     </Provider>
   );
-
 render(<App/>, document.getElementById('root'));
