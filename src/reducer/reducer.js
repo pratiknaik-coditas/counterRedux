@@ -1,19 +1,56 @@
 
 const init={
-    count:0
-};
+    counter:[]
+    };
+
 export function reducers(state=init,action) {
     switch(action.type) {
+
+        case 'ADD_COUNTER':
+
+        {let  newCounter={
+          count:0,
+        }
+        
+        return{...state,counter:state.counter.concat(newCounter)}
+        }
+
         case 'INCREMENT':
-          return {
-            count: state.count + 1
-          };
+        {
+        let newCntr;
+        newCntr=state.counter.slice();
+
+       (++newCntr[action.index].count);
+
+        return {...state,counter:newCntr};  
+        }
+
         case 'DECREMENT':
-          return {
-            count: state.count - 1
-          };
-        default:
+        {
+        let newCntr;
+        newCntr=state.counter.slice();
+        (--newCntr[action.index].count);
+
+        return{...state,counter:newCntr};
+        }
+        
+        case 'DELETE_COUNTER':{
+          // let newCntr;
+
+          // newCntr=state.counter.slice();
+          
+          let a;
+          a=state.counter.slice();
+          a=a.filter((count,index)=>(index!=action.index));
+
+          return{...state,counter:a};
+
+        }
+        default:       
           return state;
       }
+
+
+
 }
- 
+    
